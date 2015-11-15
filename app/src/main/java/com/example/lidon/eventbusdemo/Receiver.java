@@ -29,11 +29,6 @@ public class Receiver extends BroadcastReceiver{
             event=new Event(eventData+" Charging");
         }else if(intent.getAction().equals(Intent.ACTION_POWER_DISCONNECTED)){
             event=new Event(eventData+" discharging");
-        }else if(intent.getAction().equals(Intent.ACTION_SCREEN_ON)){
-            event=new Event(eventData+" screen is on");
-        }
-        else if(intent.getAction().equals(Intent.ACTION_SCREEN_OFF)){
-            event=new Event(eventData+" screen is off");
         }
         Log.d("demo1","onReceive: "+event.getData());
         bus.post(event);
