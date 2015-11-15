@@ -10,13 +10,13 @@ import de.greenrobot.event.EventBus;
 /**
  * Created by lidon on 11/14/2015.
  */
-public class ChargingReceiver extends BroadcastReceiver{
+public class Receiver extends BroadcastReceiver{
 
     private EventBus bus=EventBus.getDefault();
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        ChargingEvent event=null;
+        Event event=null;
 
         Time time=new Time();
         time.setToNow();
@@ -24,10 +24,11 @@ public class ChargingReceiver extends BroadcastReceiver{
 
         String eventData="@"+timeOfEvent+" this device started";
         if(intent.getAction().equals(Intent.ACTION_POWER_CONNECTED)){
-            event=new ChargingEvent(eventData+" Charging");
+            event=new Event(eventData+" Charging");
         }else if(intent.getAction().equals(Intent.ACTION_POWER_DISCONNECTED)){
-            event=new ChargingEvent(eventData+" discharging");
+            event=new Event(eventData+" discharging");
         }
+
 
         bus.post(event);
     }

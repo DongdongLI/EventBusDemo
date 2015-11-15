@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
-    public void onEvent(ChargingEvent event){
+    public void onEvent(Event event){
         textView.setText(textView.getText()+"\n"+event.getData());
     }
 }
